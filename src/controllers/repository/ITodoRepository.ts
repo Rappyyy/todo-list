@@ -1,10 +1,11 @@
+// File: repository/ITodoRepository.ts
 import { ITodo } from "../dto";
 import { ITodoRequest } from "../types";
 
-export interface IUserRepository {
-    create(user : ITodoRequest) : Promise<ITodo>
-    getTodos() : Promise <ITodo[]>
-    getTodoById(userId: string) : Promise <ITodo | undefined>
-    updateTodo(id: string, user: ITodoRequest): Promise<ITodo>
-    delete(id: string): Promise<ITodo>
+export interface ITodoRepository {
+  create(todo: ITodoRequest): Promise<ITodo>;
+  getTodos(offset?: number, limit?: number): Promise<ITodo[]>;
+  getTodoById(todoId: string): Promise<ITodo | undefined>;
+  updateTodo(id: string, todo: ITodoRequest): Promise<ITodo>;
+  delete(id: string): Promise<ITodo>;
 }

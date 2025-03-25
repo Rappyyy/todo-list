@@ -1,16 +1,19 @@
-import express, { Application, Request, Response, NextFunction} from 'express';
+import express, { Application } from 'express';
+import dotenv from 'dotenv';
+import todoRoutes from './routes/todoRoutes';
 
-const app : Application = express()
+dotenv.config();
+
+const app: Application = express();
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
-
-// Routes
-
+app.use('/api/todos', todoRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Well done!')
-})
+  res.send('Well done!');
+});
 
-app.listen(3000, () => {
-    console.log("Application is listening on port 3000!")
-})
+app.listen(PORT, () => {
+  console.log(`Application is listening on port ${PORT}`);
+});
